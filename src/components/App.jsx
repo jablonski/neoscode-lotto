@@ -28,6 +28,7 @@ export default function App() {
       </Switch>
       <button
         class="button restart"
+        disabled={numbers().length === 0}
         onClick={() => {
           setNumbers([]);
           setStep("Game");

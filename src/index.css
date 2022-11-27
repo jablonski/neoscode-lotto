@@ -45,13 +45,13 @@
   transform: scale(1.1);
 }
 
-.button:disabled {
-  background-color: var(--background);
-}
-
 .button.restart {
   background-color: var(--tertiary);
   color: var(--white);
+}
+
+.button:disabled {
+  background-color: var(--background);
 }
 
 .grid {

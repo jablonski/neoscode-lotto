@@ -67,9 +67,6 @@ export default function Form(props) {
       <button class="button" disabled={isSubmitDisabled()} onClick={submit}>
         Absenden
       </button>
-      <Show when={loading()}>
-        <div class="loader"></div>
-      </Show>
     </section>
   );
 }
