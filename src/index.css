@@ -1,6 +1,7 @@
 @font-face {
   src: url(./assets/Ubuntu-Regular.subset.woff2);
-  font-family: Ubuntu;
+  font-family: "Ubuntu";
+  font-display: swap;
 }
 
 :root {
@@ -13,7 +14,7 @@
 
 html {
   font-size: 16px;
-  font-family: Ubuntu;
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
 }
 
 main {
