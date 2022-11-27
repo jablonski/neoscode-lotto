@@ -4,7 +4,7 @@
 export default function Field(props) {
   return (
     <div
-      classList={{ field: true, selected: props.selected }}
+      classList={{ bubble: true, selected: props.selected }}
       onClick={props.onClick}
     >
       {props.label}

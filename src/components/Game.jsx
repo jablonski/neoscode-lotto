@@ -40,12 +40,15 @@ export default function Game(props) {
         </Index>
       </div>
       <div>
-        <button onClick={() => quicktipp()}>Quicktipp</button>
+        <button class="button" onClick={() => quicktipp()}>
+          Quicktipp
+        </button>
         <button
+          class="button"
           disabled={props.numbers().length < 6}
           onClick={() => props.onSubmit()}
         >
-          Fertig
+          Weiter
         </button>
       </div>
     </>

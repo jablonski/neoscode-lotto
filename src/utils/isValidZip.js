@@ -2,7 +2,7 @@
  * @param {string} zip
  */
 export default async function isValidZip(zip) {
-  if (zip.length !== 5) {
+  if (!/^\d\d\d\d\d$/.test(zip)) {
     return "Die Postleitzahl ist nicht korrekt eingegeben";
   }
   const { nhits } = await (
@@ -10,5 +10,5 @@ export default async function isValidZip(zip) {
       `https://public.opendatasoft.com/api/records/1.0/search/?dataset=georef-germany-postleitzahl&q=${zip}`
     )
   ).json();
-  return nhits !== 1 ? "Die Postleitzahl existiert nicht" : "";
+  return nhits < 1 ? "Die Postleitzahl existiert nicht" : "";
 }

@@ -17,7 +17,7 @@ html {
   font-family: "Ubuntu", Arial, Helvetica, sans-serif;
 }
 
-main {
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,7 +25,11 @@ main {
   gap: 1rem;
 }
 
-button {
+.headline {
+  text-align: center;
+}
+
+.button {
   transition: 0.5s ease;
   cursor: pointer;
   margin: 0.5rem;
@@ -37,37 +41,43 @@ button {
   color: var(--white);
 }
 
-button:hover {
+.button:hover {
   transform: scale(1.1);
 }
 
-button:disabled {
+.button:disabled {
   background-color: var(--background);
+}
+
+.button.restart {
+  background-color: var(--tertiary);
+  color: var(--white);
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 0.5rem;
-  width: 30%;
 }
 
-.field {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.bubble {
+  display: inline-block;
   transition: 0.5s ease;
-  cursor: pointer;
+  margin: 0.2rem;
   border-radius: 50%;
-  background-color: var(--background);
+  background-color: var(--tertiary);
   padding: 1rem;
+  width: 1rem;
+  height: 1rem;
+  text-align: center;
 }
 
-.field:hover {
+.grid .bubble:hover {
   transform: scale(1.1);
+  cursor: pointer;
 }
 
-.selected {
+.bubble.selected {
   background-color: var(--secondary);
 }
 
@@ -77,55 +87,30 @@ button:disabled {
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  width: 30%;
 }
 
-input {
+.input {
   border: 1px solid var(--tertiary);
   border-radius: 1rem;
   padding: 1rem;
   min-width: 300px;
 }
 
-input:focus {
+.input:focus {
   outline: solid 1px var(--tertiary);
 }
 
-.restart {
-  background-color: var(--tertiary);
-  color: var(--white);
-}
-
 .error {
-  color: var(--tertiary);
+  border: 1px solid var(--tertiary);
+  border-radius: 0.5rem;
+  padding: 1rem;
 }
 
-table {
-  border: 1px solid var(--tertiary);
+.table {
   border-spacing: 0;
-  width: 100%;
 }
 
-td {
-  border: 1px solid var(--tertiary);
+.table td {
+  border-bottom: 2px solid var(--primary);
   padding: 1rem;
-}
-
-section {
-  text-align: center;
-}
-
-.number {
-  display: inline-block;
-  margin: 0.5rem;
-  border-radius: 50%;
-  background-color: var(--secondary);
-  padding: 1rem;
-  width: 1rem;
-  height: 1rem;
-  text-align: center;
-}
-
-h1 {
-  text-align: center;
 }

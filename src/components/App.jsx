@@ -9,8 +9,8 @@ export default function App() {
   const [step, setStep] = createSignal("Game");
 
   return (
-    <main>
-      <h1>Neoscode-Challenge</h1>
+    <main class="container">
+      <h1 class="headline">Neoscode-Challenge #1</h1>
       <Switch>
         <Match when={step() === "Game"}>
           <Game
@@ -27,7 +27,7 @@ export default function App() {
         </Match>
       </Switch>
       <button
-        class="restart"
+        class="button restart"
         onClick={() => {
           setNumbers([]);
           setStep("Game");

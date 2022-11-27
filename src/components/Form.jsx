@@ -41,25 +41,28 @@ export default function Form(props) {
   return (
     <section class="form">
       <input
+        class="input"
         type="text"
         name="vorname"
         placeholder="Vorname"
         onInput={(e) => setVorname(e.currentTarget.value)}
       />
       <input
+        class="input"
         type="text"
         name="nachname"
         placeholder="Nachname"
         onInput={(e) => setNachname(e.currentTarget.value)}
       />
       <input
+        class="input"
         type="text"
         name="plz"
         placeholder="PLZ"
         onInput={(e) => setPlz(e.currentTarget.value)}
       />
-      <div class="error">{error()}</div>
-      <button disabled={loading()} onClick={submit}>
+      {error() && <div class="error">{error()}</div>}
+      <button class="button" disabled={loading()} onClick={submit}>
         Absenden
       </button>
     </section>
