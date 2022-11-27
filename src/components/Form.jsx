@@ -7,8 +7,10 @@ export default function Form(props) {
   const [nachname, setNachname] = createSignal("");
   const [plz, setPlz] = createSignal("");
   const [error, setError] = createSignal("");
+  const [loading, setLoading] = createSignal(false);
 
   async function submit() {
+    setLoading(true);
     setError("");
     if (vorname() === "" || nachname() === "" || plz() === "") {
       setError("Alle Felder sind erforderlich!");
@@ -33,6 +35,7 @@ export default function Form(props) {
         props.onSubmit();
       }
     }
+    setLoading(false);
   }
 
   return (
@@ -56,7 +59,9 @@ export default function Form(props) {
         onInput={(e) => setPlz(e.currentTarget.value)}
       />
       <div class="error">{error()}</div>
-      <button onClick={submit}>Absenden</button>
+      <button disabled={loading()} onClick={submit}>
+        Absenden
+      </button>
     </section>
   );
 }

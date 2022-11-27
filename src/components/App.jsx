@@ -10,7 +10,7 @@ export default function App() {
 
   return (
     <main>
-      <h1>Neoscode &ndash; Solid.js & Supabase</h1>
+      <h1>Neoscode-Challenge</h1>
       <Switch>
         <Match when={step() === "Game"}>
           <Game

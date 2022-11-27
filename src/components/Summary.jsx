@@ -9,25 +9,24 @@ export default function Summary() {
 
   return (
     <section>
-      {
-        <table>
-          <For each={data()}>
-            {({ id, vorname, nachname, plz, zahlen }) => (
-              <tr>
-                <td>{id}</td>
-                <td>{vorname}</td>
-                <td>{nachname}</td>
-                <td>{plz}</td>
-                <td>
-                  {zahlen
-                    ? zahlen.map((zahl) => <span class="number">{zahl}</span>)
-                    : ""}
-                </td>
-              </tr>
-            )}
-          </For>
-        </table>
-      }
+      {data().length === 0 ? <div>Loading...</div> : ""}
+      <table>
+        <For each={data()}>
+          {({ id, vorname, nachname, plz, zahlen }) => (
+            <tr>
+              <td>{id}</td>
+              <td>{vorname}</td>
+              <td>{nachname}</td>
+              <td>{plz}</td>
+              <td>
+                {zahlen
+                  ? zahlen.map((zahl) => <span class="number">{zahl}</span>)
+                  : ""}
+              </td>
+            </tr>
+          )}
+        </For>
+      </table>
     </section>
   );
 }
