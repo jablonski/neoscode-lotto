@@ -1,14 +1,10 @@
 import { createSignal, For, onMount } from "solid-js";
-import supabase from "../utils/supabase";
 
 export default function Summary() {
   const [data, setData] = createSignal([]);
 
   onMount(async () => {
-    setData(
-      (await supabase.from("games").select().order("id", { ascending: false }))
-        .data
-    );
+    setData(await (await fetch("/api/summary")).json());
   });
 
   return (

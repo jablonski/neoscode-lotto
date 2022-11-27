@@ -1,7 +1,6 @@
 import { createSignal } from "solid-js";
 
-import { default as isValidZip, default as zip } from "../utils/isValidZip";
-import supabase from "../utils/supabase";
+import isValidZip from "../utils/isValidZip";
 
 export default function Form(props) {
   const [vorname, setVorname] = createSignal("");
@@ -18,11 +17,18 @@ export default function Form(props) {
       if (zipValidation) {
         setError(zipValidation);
       } else {
-        await supabase.from("games").insert({
-          vorname: vorname(),
-          nachname: nachname(),
-          plz: plz(),
-          zahlen: props.numbers(),
+        await fetch("/api/submit", {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({
+            vorname: vorname(),
+            nachname: nachname(),
+            plz: plz(),
+            zahlen: props.numbers(),
+          }),
         });
         props.onSubmit();
       }
