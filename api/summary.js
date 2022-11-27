@@ -1,4 +1,4 @@
-import supabase from "./supabase";
+import supabase from "./_supabase";
 
 export default async function handler(req, res) {
   return res.send(

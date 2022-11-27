@@ -1,7 +1,6 @@
-import supabase from "./supabase";
+import supabase from "./_supabase";
 
 export default async function handler(req, res) {
-  console.log(req);
   const { vorname, nachname, plz, zahlen } = req.body;
   await supabase.from("games").insert({
     vorname,
