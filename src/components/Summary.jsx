@@ -8,7 +8,7 @@ export default function Summary() {
   });
 
   return (
-    <table class="table">
+    <table class="summary">
       {data().length === 0 && (
         <tr>
           <td>Loading...</td>

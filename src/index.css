@@ -106,11 +106,14 @@ html {
   padding: 1rem;
 }
 
-.table {
+.summary {
   border-spacing: 0;
 }
 
-.table td {
-  border-bottom: 2px solid var(--primary);
+.summary td {
   padding: 1rem;
+}
+
+.summary tr:nth-child(2n + 1) {
+  background-color: #e0e0e0;
 }
