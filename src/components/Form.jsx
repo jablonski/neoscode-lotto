@@ -1,4 +1,4 @@
-import { createSignal } from "solid-js";
+import { createSignal, Show } from "solid-js";
 
 import isValidZip from "../utils/isValidZip";
 
@@ -61,10 +61,15 @@ export default function Form(props) {
         placeholder="PLZ"
         onInput={(e) => setPlz(e.currentTarget.value)}
       />
-      {error() && <div class="error">{error()}</div>}
+      <Show when={error()}>
+        <div class="error">{error()}</div>
+      </Show>
       <button class="button" disabled={isSubmitDisabled()} onClick={submit}>
         Absenden
       </button>
+      <Show when={loading()}>
+        <div class="loader"></div>
+      </Show>
     </section>
   );
 }

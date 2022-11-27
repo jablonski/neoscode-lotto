@@ -12,7 +12,7 @@
   --white: #ffffff;
 }
 
-html {
+* {
   font-size: 16px;
   font-family: "Ubuntu", Arial, Helvetica, sans-serif;
 }
@@ -65,7 +65,7 @@ html {
 .bubble {
   display: inline-block;
   transition: 0.5s ease;
-  margin: 0.2rem;
+  margin: 1px;
   border-radius: 50%;
   background-color: var(--tertiary);
   padding: 1rem;
@@ -99,23 +99,43 @@ html {
 }
 
 .input:focus {
-  outline: solid 1px var(--tertiary);
+  outline: none;
+  border: 1px solid var(--primary);
 }
 
 .error {
-  border: 1px solid var(--tertiary);
-  border-radius: 0.5rem;
   padding: 1rem;
 }
 
 .summary {
+  border: 1px solid var(--primary);
   border-spacing: 0;
 }
 
 .summary td {
   padding: 1rem;
+  text-align: center;
 }
 
-.summary tr:nth-child(2n + 1) {
-  background-color: #e0e0e0;
+.summary td[colspan] {
+  border-bottom: 1px solid var(--primary);
+}
+
+.loader {
+  animation: spinner 4s linear infinite;
+  margin: auto;
+  border: 20px solid var(--background);
+  border-top: 20px solid var(--primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

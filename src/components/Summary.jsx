@@ -1,4 +1,4 @@
-import { createSignal, For, onMount } from "solid-js";
+import { createSignal, For, onMount, Show } from "solid-js";
 
 export default function Summary() {
   const [data, setData] = createSignal([]);
@@ -8,27 +8,28 @@ export default function Summary() {
   });
 
   return (
-    <table class="summary">
-      {data().length === 0 && (
-        <tr>
-          <td>Loading...</td>
-        </tr>
-      )}
-      <For each={data()}>
-        {({ id, vorname, nachname, plz, zahlen }) => (
-          <tr>
-            <td>{id}</td>
-            <td>{vorname}</td>
-            <td>{nachname}</td>
-            <td>{plz}</td>
-            <td>
-              {zahlen
-                ? zahlen.map((zahl) => <span class="bubble">{zahl}</span>)
-                : ""}
-            </td>
-          </tr>
-        )}
-      </For>
-    </table>
+    <Show when={data().length > 0} fallback={<div class="loader"></div>}>
+      <table class="summary">
+        <For each={data()}>
+          {({ id, vorname, nachname, plz, zahlen }) => (
+            <>
+              <tr>
+                <td>{id}</td>
+                <td>{vorname}</td>
+                <td>{nachname}</td>
+                <td>{plz}</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  {zahlen
+                    ? zahlen.map((zahl) => <span class="bubble">{zahl}</span>)
+                    : ""}
+                </td>
+              </tr>
+            </>
+          )}
+        </For>
+      </table>
+    </Show>
   );
 }
