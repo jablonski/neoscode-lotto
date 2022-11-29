@@ -1,22 +1,24 @@
 import { createSignal, Show } from "solid-js";
-
+import { setStore, store } from "../store";
 import isValidZip from "../utils/isValidZip";
 
 export default function Form(props) {
-  const [vorname, setVorname] = createSignal("");
-  const [nachname, setNachname] = createSignal("");
-  const [plz, setPlz] = createSignal("");
   const [error, setError] = createSignal("");
   const [loading, setLoading] = createSignal(false);
 
   function isSubmitDisabled() {
-    return loading() || vorname() === "" || nachname() === "" || plz() === "";
+    return (
+      loading() ||
+      store.firstname === "" ||
+      store.lastname === "" ||
+      store.zip === ""
+    );
   }
 
   async function submit() {
     setLoading(true);
     setError("");
-    const zipValidation = await isValidZip(plz());
+    const zipValidation = await isValidZip(store.zip);
     if (zipValidation) {
       setError(zipValidation);
     } else {
@@ -27,10 +29,10 @@ export default function Form(props) {
         },
         method: "POST",
         body: JSON.stringify({
-          vorname: vorname(),
-          nachname: nachname(),
-          plz: plz(),
-          zahlen: props.numbers(),
+          vorname: store.firstname,
+          nachname: store.lastname,
+          plz: store.zip,
+          zahlen: store.numbers,
         }),
       });
       props.onSubmit();
@@ -45,21 +47,21 @@ export default function Form(props) {
         type="text"
         name="vorname"
         placeholder="Vorname"
-        onInput={(e) => setVorname(e.currentTarget.value)}
+        onInput={(e) => setStore({ firstname: e.currentTarget.value })}
       />
       <input
         class="input"
         type="text"
         name="nachname"
         placeholder="Nachname"
-        onInput={(e) => setNachname(e.currentTarget.value)}
+        onInput={(e) => setStore({ lastname: e.currentTarget.value })}
       />
       <input
         class="input"
         type="text"
         name="plz"
         placeholder="PLZ"
-        onInput={(e) => setPlz(e.currentTarget.value)}
+        onInput={(e) => setStore({ zip: e.currentTarget.value })}
       />
       <Show when={error()}>
         <div class="error">{error()}</div>

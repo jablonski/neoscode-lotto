@@ -1,11 +1,10 @@
 import { createSignal, Match, Switch } from "solid-js";
-import Summary from "./Summary";
-
+import { setStore, store } from "../store";
 import Form from "./Form";
 import Game from "./Game";
+import Summary from "./Summary";
 
 export default function App() {
-  const [numbers, setNumbers] = createSignal([]);
   const [step, setStep] = createSignal("Game");
 
   return (
@@ -13,14 +12,10 @@ export default function App() {
       <h1 class="headline">Neoscode-Challenge #1</h1>
       <Switch>
         <Match when={step() === "Game"}>
-          <Game
-            numbers={numbers}
-            setNumbers={setNumbers}
-            onSubmit={() => setStep("Form")}
-          />
+          <Game onSubmit={() => setStep("Form")} />
         </Match>
         <Match when={step() === "Form"}>
-          <Form numbers={numbers} onSubmit={() => setStep("Summary")} />
+          <Form onSubmit={() => setStep("Summary")} />
         </Match>
         <Match when={step() === "Summary"}>
           <Summary />
@@ -28,9 +23,9 @@ export default function App() {
       </Switch>
       <button
         class="button restart"
-        disabled={numbers().length === 0}
+        disabled={store.numbers.length === 0}
         onClick={() => {
-          setNumbers([]);
+          setStore({ numbers: [] });
           setStep("Game");
         }}
       >
