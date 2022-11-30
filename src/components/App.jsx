@@ -25,7 +25,7 @@ export default function App() {
         class="button restart"
         disabled={store.numbers.length === 0}
         onClick={() => {
-          setStore({ numbers: [] });
+          setStore({ firstname: "", lastname: "", zip: "", numbers: [] });
           setStep("Game");
         }}
       >
