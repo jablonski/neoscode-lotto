@@ -28,12 +28,7 @@ export default function Form(props) {
           "Content-Type": "application/json",
         },
         method: "POST",
-        body: JSON.stringify({
-          vorname: store.firstname,
-          nachname: store.lastname,
-          plz: store.zip,
-          zahlen: store.numbers,
-        }),
+        body: JSON.stringify(store),
       });
       props.onSubmit();
     }
