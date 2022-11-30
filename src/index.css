@@ -108,7 +108,7 @@
 }
 
 .summary {
-  border: 1px solid var(--primary);
+  border-top: 1px solid var(--primary);
   border-spacing: 0;
 }
 
