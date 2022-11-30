@@ -4,7 +4,7 @@ export default function Summary() {
   const [data, setData] = createSignal([]);
 
   onMount(async () => {
-    setData(await (await fetch("/api/summary")).json());
+    setData((await (await fetch("/api/summary")).json()).data);
   });
 
   return (
