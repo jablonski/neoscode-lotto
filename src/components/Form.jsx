@@ -22,12 +22,13 @@ export default function Form(props) {
     if (zipValidation) {
       setError(zipValidation);
     } else {
-      await fetch("/api/submit", {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
+      await fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/games`, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_KEY}`,
+          apiKey: import.meta.env.VITE_SUPABASE_KEY,
+        },
         body: JSON.stringify(store),
       });
       props.onSubmit();
