@@ -6,14 +6,17 @@ export default function Summary() {
   onMount(async () => {
     setData(
       await (
-        await fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/games`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_KEY}`,
-            apiKey: import.meta.env.VITE_SUPABASE_KEY,
-          },
-        })
+        await fetch(
+          `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/games?order=id.desc`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_KEY}`,
+              apiKey: import.meta.env.VITE_SUPABASE_KEY,
+            },
+          }
+        )
       ).json()
     );
   });
